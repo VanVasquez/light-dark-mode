@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --light-mode: #f3f3f3;
+  --light-mode-button: #ff6600;
+  --light-mode-button-font: #f3f3f3;
+  --dark-mode: #272b33;
+  --dark-mode-button: #ffae00;
+  --dark-mode-button-font: #4b4b4b;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: all 200ms ease-in-out;
+}
+
+button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  margin-top: 2rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 200ms ease-in-out;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  border: 4px solid var(--dark-mode-button);
+  z-index: -1;
+  transition: all 200ms ease-in-out;
+}
+button:hover::before {
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+}
+button:hover {
+  transform: scale(1.1);
+  color: #272b33;
+  background-color: var(--dark-mode-button);
+}
+
+.dark-mode-button {
+  background-color: var(--dark-mode-button);
+  color: var(--dark-mode-button-font);
+}
+.light-mode-button {
+  background-color: var(--light-mode-button);
+  color: var(--light-mode-button-font);
+}
+
+.dark-mode {
+  background-color: var(--dark-mode);
+  color: #f3f3f3;
+}
+
+.light-mode {
+  background-color: var(--light-mode);
+  color: #272b33;
+}
+
+.moon {
+  color: var(--dark-mode-button);
+}
+.sun {
+  color: var(--light-mode-button);
+}
+.icon {
+  position: absolute;
+  top: 15%;
+  left: 47%;
+}
+.sun,
+.moon {
+  position: absolute;
+  transition: opacity 1s ease-in;
+}
+.inactive {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+.rotate {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 200ms;
+}
+@keyframes rotate {
+  from {
+    translate: 0 0;
+    rotate: 0;
+  }
+  to {
+    translate: 100% 50%;
+    rotate: 90deg;
+  }
+}
